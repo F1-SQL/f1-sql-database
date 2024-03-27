@@ -1,0 +1,1 @@
+ALTER TABLE [SequelFormulaNew].[dbo].[intervals] DROP COLUMN [date] 

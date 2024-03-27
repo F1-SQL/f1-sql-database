@@ -1,0 +1,1 @@
+ALTER TABLE [SequelFormulaNew].[dbo].[sessions] DROP COLUMN session_type,[year],circuit_short_name,country_code,country_key,country_name,location
