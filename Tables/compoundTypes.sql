@@ -8,9 +8,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[countries](
-	[country_key] [tinyint] NOT NULL,
-	[country_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NOT NULL,
-	[country_code] [nvarchar](50) COLLATE Latin1_General_CI_AS NOT NULL
+CREATE TABLE [dbo].[compoundTypes](
+	[compound_key] [tinyint] NOT NULL,
+	[compound_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NOT NULL
 ) ON [PRIMARY]
 GO

@@ -1,22 +1,25 @@
 /*
-	Created by RIS-001\Rich using dbatools Export-DbaScript for objects on RIS-001 at 03/25/2024 09:23:20
+	Created by RIS-001\Rich using dbatools Export-DbaScript for objects on RIS-001 at 03/28/2024 17:38:03
 	See https://dbatools.io/Export-DbaScript for more information
 */
-USE [SequelFormulaV2]
+USE [SequelFormulaNew]
 GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[drivers](
-	[driverId] [smallint] NOT NULL,
-	[driverRef] [nvarchar](50) NOT NULL,
-	[number] [tinyint] NULL,
-	[code] [nvarchar](50) NULL,
-	[forename] [nvarchar](50) NOT NULL,
-	[surname] [nvarchar](50) NOT NULL,
-	[dob] [date] NOT NULL,
-	[nationality] [nvarchar](50) NOT NULL,
-	[url] [nvarchar](100) NOT NULL
+	[broadcast_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NOT NULL,
+	[country_code] [nvarchar](50) COLLATE Latin1_General_CI_AS NULL,
+	[driver_key] [tinyint] NOT NULL,
+	[first_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NULL,
+	[full_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NOT NULL,
+	[headshot_url] [nvarchar](250) COLLATE Latin1_General_CI_AS NULL,
+	[last_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NULL,
+	[meeting_key] [smallint] NOT NULL,
+	[name_acronym] [nvarchar](50) COLLATE Latin1_General_CI_AS NOT NULL,
+	[session_key] [smallint] NOT NULL,
+	[team_colour] [nvarchar](50) COLLATE Latin1_General_CI_AS NULL,
+	[team_name] [nvarchar](50) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
