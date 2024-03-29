@@ -1,1 +1,0 @@
-ALTER TABLE [SequelFormulaNew].[dbo].[laps] ALTER COLUMN [is_pit_out_lap] BIT

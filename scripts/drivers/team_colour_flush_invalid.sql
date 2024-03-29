@@ -1,0 +1,1 @@
+UPDATE [SequelFormulaNew].[dbo].[drivers] SET [team_colour] = NULL WHERE team_colour = '5.2e+253'

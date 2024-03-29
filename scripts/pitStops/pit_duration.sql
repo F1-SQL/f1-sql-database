@@ -1,0 +1,1 @@
+ALTER TABLE [SequelFormulaNew].[dbo].[pitStops] ALTER COLUMN [pit_duration] DECIMAL(10, 3)
