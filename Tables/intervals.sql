@@ -1,5 +1,5 @@
 /*
-	Created by RIS-001\Rich using dbatools Export-DbaScript for objects on RIS-001 at 03/28/2024 17:38:03
+	Created by RIS-001\Rich using dbatools Export-DbaScript for objects on RIS-001 at 03/30/2024 11:02:36
 	See https://dbatools.io/Export-DbaScript for more information
 */
 USE [SequelFormulaNew]
@@ -9,11 +9,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[intervals](
-	[date] [datetime] NULL,
-	[driver_key] [tinyint] NOT NULL,
-	[gap_to_leader] [float] NULL,
-	[interval] [float] NULL,
-	[meeting_key] [smallint] NOT NULL,
-	[session_key] [smallint] NOT NULL
+	[date] [datetime2](6) NOT NULL,
+	[driver_key] [int] NOT NULL,
+	[gap_to_leader] [decimal](7, 3) NULL,
+	[interval] [decimal](7, 3) NULL,
+	[meeting_key] [int] NOT NULL,
+	[session_key] [int] NOT NULL,
+	[laps_to_leader] [int] NULL,
+	[lapped_laps] [int] NULL
 ) ON [PRIMARY]
 GO

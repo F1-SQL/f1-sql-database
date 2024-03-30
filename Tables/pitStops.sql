@@ -1,5 +1,5 @@
 /*
-	Created by RIS-001\Rich using dbatools Export-DbaScript for objects on RIS-001 at 03/28/2024 17:38:04
+	Created by RIS-001\Rich using dbatools Export-DbaScript for objects on RIS-001 at 03/30/2024 11:02:36
 	See https://dbatools.io/Export-DbaScript for more information
 */
 USE [SequelFormulaNew]
@@ -10,10 +10,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[pitStops](
 	[date] [datetime] NULL,
-	[driver_key] [varchar](max) COLLATE Latin1_General_CI_AS NULL,
-	[lap_number] [varchar](max) COLLATE Latin1_General_CI_AS NULL,
-	[meeting_key] [varchar](max) COLLATE Latin1_General_CI_AS NULL,
-	[pit_duration] [varchar](max) COLLATE Latin1_General_CI_AS NULL,
-	[session_key] [varchar](max) COLLATE Latin1_General_CI_AS NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+	[driver_key] [int] NOT NULL,
+	[lap_number] [int] NOT NULL,
+	[meeting_key] [int] NOT NULL,
+	[pit_duration] [decimal](10, 3) NULL,
+	[session_key] [int] NOT NULL,
+ CONSTRAINT [PK_DriverMeetingSessionKeyLap] PRIMARY KEY CLUSTERED 
+(
+	[driver_key] ASC,
+	[lap_number] ASC,
+	[meeting_key] ASC,
+	[session_key] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
