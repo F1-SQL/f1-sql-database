@@ -1,1 +1,1 @@
-ALTER TABLE [SequelFormulaNew].[dbo].[meetings] ALTER COLUMN [date_start] DATETIME
+ALTER TABLE [SequelFormulaNew].[dbo].[meetings] ALTER COLUMN [date_start] DATETIME2(6)

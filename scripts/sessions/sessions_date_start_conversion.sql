@@ -12,12 +12,11 @@ UPDATE [SequelFormulaNew].[dbo].[sessions] SET [date_start] = NULL
 
 GO
 
-ALTER TABLE [SequelFormulaNew].[dbo].[sessions] ALTER COLUMN [date_start] DATETIME
+ALTER TABLE [SequelFormulaNew].[dbo].[sessions] ALTER COLUMN [date_start] DATETIME2(6)
 
 GO
 
-UPDATE  [SequelFormulaNew].[dbo].[sessions] SET [date_start] = CONVERT(DATETIME, CONVERT(CHAR(8), [Date_start_new], 112) 
-+ ' ' + CONVERT(CHAR(8), [Time_start], 108))
+UPDATE  [SequelFormulaNew].[dbo].[sessions] SET [date_start] = CONVERT(DATETIME2(6), CONVERT(CHAR(10), [Date_start_new], 121) + ' ' + CONVERT(CHAR(12), [Time_start], 121))
 
 GO
 

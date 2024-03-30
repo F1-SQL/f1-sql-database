@@ -12,12 +12,11 @@ UPDATE [SequelFormulaNew].[dbo].[sessions] SET [date_end] = NULL
 
 GO
 
-ALTER TABLE [SequelFormulaNew].[dbo].[sessions] ALTER COLUMN [date_end] DATETIME
+ALTER TABLE [SequelFormulaNew].[dbo].[sessions] ALTER COLUMN [date_end] DATETIME2(6)
 
 GO
 
-UPDATE  [SequelFormulaNew].[dbo].[sessions] SET [date_end] = CONVERT(DATETIME, CONVERT(CHAR(8), [Date_end_new], 112) 
-+ ' ' + CONVERT(CHAR(8), [Time_end], 108))
+UPDATE  [SequelFormulaNew].[dbo].[sessions] SET [date_end] = CONVERT(DATETIME2(6), CONVERT(CHAR(10), [Date_end_new], 121) + ' ' + CONVERT(CHAR(12), [Time_end], 121))
 
 GO
 

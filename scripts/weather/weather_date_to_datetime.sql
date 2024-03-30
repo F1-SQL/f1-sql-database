@@ -3,7 +3,7 @@ ALTER TABLE [SequelFormulaNew].[dbo].[weather] ADD [Time] Time
 
 GO
 
-ALTER TABLE [SequelFormulaNew].[dbo].[weather] ALTER COLUMN date nvarchar(50) NULL
+ALTER TABLE [SequelFormulaNew].[dbo].[weather] ALTER COLUMN date nvarchar(50) NOT NULL
 
 GO
 
@@ -16,13 +16,11 @@ UPDATE [SequelFormulaNew].[dbo].[weather] SET [date] = NULL
 
 GO
 
-ALTER TABLE [SequelFormulaNew].[dbo].[weather] ALTER COLUMN [date] DATETIME
+ALTER TABLE [SequelFormulaNew].[dbo].[weather] ALTER COLUMN [date] DATETIME2(6)
 
 GO
 
-UPDATE  [SequelFormulaNew].[dbo].[weather] SET [date] = CONVERT(DATETIME, CONVERT(CHAR(8), [Date_new], 112) 
-+ ' ' + CONVERT(CHAR(8), Time, 108))
-FROM [SequelFormulaNew].[dbo].[weather]
+UPDATE  [SequelFormulaNew].[dbo].[weather] SET [date] = CONVERT(DATETIME2(6), CONVERT(CHAR(10), [Date_new], 121) + ' ' + CONVERT(CHAR(12), [Time], 121))
 
 GO
 
