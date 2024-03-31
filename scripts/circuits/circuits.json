@@ -1,13 +1,8 @@
 {
     "items": [
       {
-        "filename": "/circuits/circuit_key_fix.sql",
-        "order": 1,
-        "description": "This is the first file."
-      },
-      {
         "filename": "/circuits/circuit_short_name_fix.sql",
-        "order": 2,
+        "order": 1,
         "description": "This is the second file."
       }      
     ]
