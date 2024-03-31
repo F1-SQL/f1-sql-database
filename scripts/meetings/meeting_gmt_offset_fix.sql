@@ -1,8 +1,8 @@
-ALTER TABLE [SequelFormulaNew].[dbo].[meetings] ADD [gmt_offset_new] INT
+ALTER TABLE [dbo].[meetings] ADD [gmt_offset_new] INT
 
 GO
 
-UPDATE [SequelFormulaNew].[dbo].[meetings] SET [gmt_offset_new] =
+UPDATE [dbo].[meetings] SET [gmt_offset_new] =
 	CASE
 		WHEN [gmt_offset] LIKE '-%' THEN 
 			CONVERT(INT, LEFT(REPLACE(
@@ -19,13 +19,4 @@ UPDATE [SequelFormulaNew].[dbo].[meetings] SET [gmt_offset_new] =
 						),2)
 					) END
 
-GO
-
-ALTER TABLE [SequelFormulaNew].[dbo].[meetings] DROP COLUMN [gmt_offset]
-
-GO 
-
-USE SequelFormulaNew;
-GO
-EXEC sp_rename 'dbo.meetings.gmt_offset_new', 'gmt_offset', 'COLUMN';
 GO

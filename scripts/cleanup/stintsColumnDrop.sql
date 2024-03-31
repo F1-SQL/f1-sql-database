@@ -1,1 +1,1 @@
-ALTER TABLE [SequelFormulaNew].[dbo].[stints] DROP COLUMN compound
+ALTER TABLE [dbo].[stints] DROP COLUMN [compound];

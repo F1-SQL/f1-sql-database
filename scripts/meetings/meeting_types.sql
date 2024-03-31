@@ -1,8 +1,8 @@
-ALTER TABLE [SequelFormulaNew].[dbo].[meetings] ADD type_key INT
+ALTER TABLE [dbo].[meetings] ADD type_key INT
 
 GO
 
-UPDATE [SequelFormulaNew].[dbo].[meetings] 
+UPDATE [dbo].[meetings] 
 
 SET type_key = 2
 
@@ -10,7 +10,7 @@ WHERE meeting_name LIKE '%Grand Prix%'
 
 GO
 
-UPDATE [SequelFormulaNew].[dbo].[meetings] 
+UPDATE [dbo].[meetings] 
 
 SET type_key = 1
 

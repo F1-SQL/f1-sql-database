@@ -1,1 +1,6 @@
-ALTER TABLE [SequelFormulaNew].[dbo].[meetings] DROP COLUMN country_code,country_name,location,[year],[circuit_short_name]
+ALTER TABLE [dbo].[meetings] DROP COLUMN [country_code];
+ALTER TABLE [dbo].[meetings] DROP COLUMN [country_name];
+ALTER TABLE [dbo].[meetings] DROP COLUMN [location];
+ALTER TABLE [dbo].[meetings] DROP COLUMN [year];
+ALTER TABLE [dbo].[meetings] DROP COLUMN [circuit_short_name];
+ALTER TABLE [dbo].[meetings] DROP COLUMN [gmt_offset];
