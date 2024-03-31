@@ -1,6 +1,6 @@
 UPDATE c
 
-SET c.[circuitRef] = m.[circuit_short_name]
+SET c.[circuit_short_name] = m.[circuit_short_name]
   
 FROM 
     [dbo].[meetings] m 

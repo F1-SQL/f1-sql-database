@@ -1,10 +1,10 @@
-ALTER TABLE [dbo].[drivers] ADD team_key INT NOT NULL;
+ALTER TABLE [dbo].[drivers] ADD [team_key] INT;
 
-GO;
+GO
 
 UPDATE d
 
-	SET d.team_key = t.team_key
+	SET d.[team_key] = t.[team_key]
 
 FROM
 	[dbo].[drivers]  d 
@@ -12,5 +12,5 @@ FROM
 INNER JOIN [dbo].[teams] t 
 	ON d.team_name = t.team_name;
 
-GO;
+GO
 

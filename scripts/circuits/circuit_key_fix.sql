@@ -1,17 +1,8 @@
-ALTER TABLE [dbo].[circuits] ADD [circuit_key] int;
-
-GO
-
 ;WITH CircuitData AS (
 
 SELECT  
-  [circuitId]
-  ,[circuitRef]
-  ,[name]
-  ,c.[location]
-  ,[country]
-  ,[lat]
-  ,[lng]
+  m.[circuit_short_name]
+  ,[name]   
   ,[alt]
   ,[url]
   ,m.circuit_key
@@ -24,7 +15,7 @@ FROM
   [dbo].[meetings] m
 
 LEFT JOIN [dbo].[circuits] c 
-    ON m.[circuit_short_name] = c.[circuitRef]
+    ON m.[circuit_short_name] = c.[circuit_short_name]
 
 WHERE 
   m.year IS NOT NULL
@@ -40,7 +31,7 @@ FROM [CircuitData] cd
 INNER JOIN [dbo].[circuits] c 
   ON c.[circuitId] = cd.[circuitId];
 
-GO;
+GO
 
 SELECT * FROM [dbo].[meetings] m
 

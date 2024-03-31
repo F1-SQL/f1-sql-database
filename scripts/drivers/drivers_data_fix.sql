@@ -3,21 +3,21 @@ DECLARE @position INT = 2;
 UPDATE [dbo].[drivers] SET last_name = JSON_VALUE('["' + REPLACE(full_name,' ','","') + '"]',CONCAT('$[',@position-1,']')) 
 WHERE last_name IS NULL
 
-GO;
+GO
 
 DECLARE @position INT = 1;
 
 UPDATE [dbo].[drivers] SET first_name = JSON_VALUE('["' + REPLACE(full_name,' ','","') + '"]',CONCAT('$[',@position-1,']')) 
 WHERE first_name IS NULL;
 
-GO;
+GO
 
 ;WITH HeadShotURL AS (
 
 SELECT 
   [broadcast_name]
   ,[country_code]
-  ,[driver_number]
+  ,[driver_key]
   ,[first_name]
   ,[full_name]
   ,[headshot_url]  
@@ -27,7 +27,7 @@ SELECT
   ,[session_key]
   ,[team_colour]
   ,[team_name]
-  ,ROW_NUMBER() OVER(PARTITION BY driver_number ORDER BY driver_number) as RowNumber
+  ,ROW_NUMBER() OVER(PARTITION BY driver_key ORDER BY driver_key) as RowNumber
 FROM 
   [dbo].[drivers]
 WHERE 
@@ -42,7 +42,7 @@ SET d.headshot_url = h.headshot_url
 FROM drivers d 
 
 INNER JOIN HeadShotURL h 
-  ON d.driver_number = h.driver_number
+  ON d.driver_key = h.driver_key
 
 WHERE d.headshot_url IS NULL
 
@@ -51,7 +51,7 @@ WHERE d.headshot_url IS NULL
 SELECT 
   [broadcast_name]
   ,[country_code]
-  ,[driver_number]
+  ,[driver_key]
   ,[first_name]
   ,[full_name]
   ,[headshot_url]  
@@ -61,7 +61,7 @@ SELECT
   ,[session_key]
   ,[team_colour]
   ,[team_name]
-  ,ROW_NUMBER() OVER(PARTITION BY driver_number ORDER BY driver_number) as RowNumber
+  ,ROW_NUMBER() OVER(PARTITION BY driver_key ORDER BY driver_key) as RowNumber
 FROM 
   [dbo].[drivers]
 WHERE 
@@ -75,7 +75,7 @@ SET d.last_name = l.last_name
 
 FROM drivers d 
 
-INNER JOIN LastNames l ON d.driver_number = l.driver_number
+INNER JOIN LastNames l ON d.driver_key = l.driver_key
 
 WHERE d.last_name IS NULL
 
@@ -83,7 +83,7 @@ WHERE d.last_name IS NULL
 
 SELECT [broadcast_name]
       ,[country_code]
-      ,[driver_number]
+      ,[driver_key]
       ,[first_name]
       ,[full_name]
       ,[headshot_url]  
@@ -93,7 +93,7 @@ SELECT [broadcast_name]
       ,[session_key]
       ,[team_colour]
       ,[team_name]
-	  ,ROW_NUMBER() OVER(PARTITION BY driver_number ORDER BY driver_number) as RowNumber
+	  ,ROW_NUMBER() OVER(PARTITION BY driver_key ORDER BY driver_key) as RowNumber
   FROM [dbo].[drivers]
   WHERE first_name IS NOT NULL
 
@@ -105,7 +105,7 @@ SET d.first_name = f.first_name
 
 FROM drivers d 
 
-INNER JOIN FirstNames f ON d.driver_number = f.driver_number
+INNER JOIN FirstNames f ON d.driver_key = f.driver_key
 
 WHERE d.first_name IS NULL
 
@@ -114,7 +114,7 @@ WHERE d.first_name IS NULL
 
 SELECT [broadcast_name]
       ,[country_code]
-      ,[driver_number]
+      ,[driver_key]
       ,[first_name]
       ,[full_name]
       ,[headshot_url]  
@@ -124,7 +124,7 @@ SELECT [broadcast_name]
       ,[session_key]
       ,[team_colour]
       ,[team_name]
-	  ,ROW_NUMBER() OVER(PARTITION BY driver_number ORDER BY driver_number) as RowNumber
+	  ,ROW_NUMBER() OVER(PARTITION BY driver_key ORDER BY driver_key) as RowNumber
   FROM [dbo].[drivers]
   WHERE country_code IS NOT NULL
 
@@ -132,42 +132,43 @@ SELECT [broadcast_name]
 
 UPDATE d
 
-SET d.country_code = c.country_code
+SET d.[country_code] = c.[country_code]
 
 FROM drivers d 
 
-INNER JOIN CountryCodes c ON d.driver_number = c.driver_number
+INNER JOIN CountryCodes c 
+  ON d.[driver_key] = c.[driver_key]
 
-WHERE d.country_code IS NULL
+WHERE d.[country_code] IS NULL
 
 CREATE TABLE [dbo].[driverMeeting]
 (
-driver_key INT NOT NULL,
-meeting_key INT NOT NULL
+[driver_key] INT NOT NULL,
+[meeting_key] INT NOT NULL
 );
 
 GO
 
-INSERT INTO [dbo].[driverMeeting] (driver_key,meeting_key)
+INSERT INTO [dbo].[driverMeeting] ([driver_key],[meeting_key])
 SELECT DISTINCT
-	driver_key,
-	meeting_key
+	[driver_key],
+	[meeting_key]
 FROM	
 	[dbo].[drivers];
 
 
 CREATE TABLE [dbo].[driverSession]
 (
-driver_key INT NOT NULL,
-session_key INT NOT NULL
+[driver_key] INT NOT NULL,
+[session_key] INT NOT NULL
 );
 
 GO
 
-INSERT INTO [dbo].[driverSession] (driver_key,session_key)
+INSERT INTO [dbo].[driverSession] ([driver_key],[session_key])
 SELECT DISTINCT
-	driver_key,
-	session_key
+	[driver_key],
+	[session_key]
 FROM	
 	[dbo].[drivers]
 
@@ -177,15 +178,15 @@ GO
 
 CREATE TABLE [dbo].[driverTeam]
 (
-driver_key INT NOT NULL,
-team_key INT NOT NULL,
-meeting_key INT NOT NULL,
-session_key INT NOT NULL
+[driver_key] INT NOT NULL,
+[team_key] INT NOT NULL,
+[meeting_key] INT NOT NULL,
+[session_key] INT NOT NULL
 );
 
 GO
 
-INSERT INTO [dbo].[driverTeam] (driver_key,team_key,meeting_key,session_key)
+INSERT INTO [dbo].[driverTeam] ([driver_key],[team_key],[meeting_key],[session_key])
 SELECT DISTINCT
 	driver_key,
 	team_key,
@@ -195,7 +196,7 @@ FROM
 	[dbo].[drivers]
 WHERE team_key IS NOT NULL
 
-GO;
+GO
 
 ;WITH Drivers AS
 (

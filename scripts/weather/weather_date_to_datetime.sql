@@ -3,7 +3,7 @@ ALTER TABLE [dbo].[weather] ADD [Time] Time
 
 GO
 
-ALTER TABLE [dbo].[weather] ALTER COLUMN date nvarchar(50) NOT NULL
+ALTER TABLE [dbo].[weather] ALTER COLUMN date nvarchar(50) NULL
 
 GO
 
