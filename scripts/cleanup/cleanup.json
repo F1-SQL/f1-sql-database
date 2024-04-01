@@ -24,6 +24,11 @@
         "filename": "/cleanup/stintsColumnDrop.sql",
         "order": 5,
         "description": "This is the third file."
+      },
+      {
+        "filename": "/cleanup/driverKeyFix_mv.sql",
+        "order": 6,
+        "description": "This is the third file."
       }
     ]
   }
