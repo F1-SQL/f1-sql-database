@@ -26,7 +26,3 @@ GO
 
 ALTER TABLE [dbo].[pitStops] DROP COLUMN [Date2]
 ALTER TABLE [dbo].[pitStops] DROP COLUMN [Time]
-
-GO
-
-SELECT * FROM [dbo].[pitStops]

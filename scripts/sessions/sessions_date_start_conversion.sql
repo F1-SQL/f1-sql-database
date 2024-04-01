@@ -20,9 +20,5 @@ UPDATE  [dbo].[sessions] SET [date_start] = CONVERT(DATETIME2(6), CONVERT(CHAR(1
 
 GO
 
-SELECT * FROM [dbo].[sessions]
-
-GO
-
 ALTER TABLE [dbo].[sessions] DROP COLUMN [Date_start_new]
 ALTER TABLE [dbo].[sessions] DROP COLUMN [Time_start]

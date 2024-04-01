@@ -20,10 +20,6 @@ UPDATE  [dbo].[position] SET date = CONVERT(DATETIME2(6), CONVERT(CHAR(10), [Dat
 
 GO
 
-SELECT * FROM [dbo].[position]
-
-GO
-
 ALTER TABLE [dbo].[position] DROP COLUMN [Date2]
 ALTER TABLE [dbo].[position] DROP COLUMN [Time]
 

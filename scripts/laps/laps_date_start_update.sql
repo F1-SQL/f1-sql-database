@@ -8,11 +8,11 @@ UPDATE [dbo].[laps] SET Time = CAST([date_start] as TIME);
 
 GO
 
-UPDATE [dbo].[laps] SET date_start = NULL;
+ALTER TABLE [dbo].[laps] ALTER COLUMN date_start DATETIME2(6) NULL;
 
 GO
 
-ALTER TABLE [dbo].[laps] ALTER COLUMN date_start DATETIME2(6);
+UPDATE [dbo].[laps] SET date_start = NULL;
 
 GO
 
@@ -22,7 +22,3 @@ GO
 
 ALTER TABLE [dbo].[laps] DROP COLUMN [Date];
 ALTER TABLE [dbo].[laps] DROP COLUMN [Time];
-
-GO
-
-ALTER TABLE [dbo].[laps] ALTER COLUMN date_start DATETIME2(6) NOT NULL;

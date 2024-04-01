@@ -20,9 +20,5 @@ UPDATE  [dbo].[sessions] SET [date_end] = CONVERT(DATETIME2(6), CONVERT(CHAR(10)
 
 GO
 
-SELECT * FROM [dbo].[sessions]
-
-GO
-
 ALTER TABLE [dbo].[sessions] DROP COLUMN [Date_end_new]
 ALTER TABLE [dbo].[sessions] DROP COLUMN [Time_end]
