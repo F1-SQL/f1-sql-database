@@ -6,8 +6,11 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[teams](
-	[team_key] [nvarchar](max) COLLATE Latin1_General_CI_AS NULL,
-	[team_name] [nvarchar](max) COLLATE Latin1_General_CI_AS NULL
+CREATE TABLE [dbo].[teamRadio](
+	[date] [datetime2](6) NULL,
+	[driver_key] [int] NULL,
+	[meeting_key] [int] NULL,
+	[recording_url] [nvarchar](max) COLLATE Latin1_General_CI_AS NULL,
+	[session_key] [int] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO

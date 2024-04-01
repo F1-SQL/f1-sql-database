@@ -6,13 +6,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[intervals](
+CREATE TABLE [dbo].[driverMeeting](
 	[driver_key] [int] NOT NULL,
-	[gap_to_leader] [decimal](7, 3) NULL,
-	[interval] [decimal](7, 3) NULL,
-	[meeting_key] [int] NOT NULL,
-	[session_key] [int] NOT NULL,
-	[laps_to_leader] [int] NULL,
-	[lapped_laps] [int] NULL
+	[meeting_key] [int] NOT NULL
 ) ON [PRIMARY]
 GO
